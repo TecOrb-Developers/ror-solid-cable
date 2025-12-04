@@ -9,13 +9,10 @@ A production-ready real-time chat application built with Rails 8, demonstrating 
 - [Solid Cable vs Redis](#solid-cable-vs-redis)
 - [Requirements](#requirements)
 - [Installation & Setup](#installation--setup)
-- [Project Structure](#project-structure)
 - [How It Works](#how-it-works)
 - [Configuration](#configuration)
 - [Running the Application](#running-the-application)
-- [Troubleshooting](#troubleshooting)
 - [Performance Considerations](#performance-considerations)
-- [Resources](#resources)
 
 ## What is Solid Cable?
 
@@ -288,26 +285,6 @@ Visit `http://localhost:3000`
    Broadcasting to chat_room: {:message=>"Hello", :sender=>"User123", ...}
    ```
 
-### Verify Database Activity
-
-```bash
-rails dbconsole
-```
-
-```sql
--- View recent messages
-SELECT * FROM solid_cable_messages ORDER BY created_at DESC LIMIT 10;
-
--- Check message count
-SELECT COUNT(*) FROM solid_cable_messages;
-
--- See cleanup in action (messages older than retention period are deleted)
-SELECT created_at FROM solid_cable_messages ORDER BY created_at;
-```
-
-**Solution**: Ensure `cable:` is at the same indentation level as `primary:` under each environment:
-
-
 ## Performance Considerations
 
 ### Database Load
@@ -364,15 +341,6 @@ production:
   config.action_cable.allowed_request_origins = ['https://yourdomain.com']
   ```
 
-### Scaling Tips
-
-1. **Horizontal Scaling**: Solid Cable works across multiple app servers
-2. **Database Replication**: Use read replicas if needed
-3. **CDN**: Serve assets via CDN to reduce server load
-4. **Background Jobs**: Offload heavy processing to Sidekiq/Solid Queue
-
-## Resources
-
 ### Official Documentation
 - [Rails 8 Release Notes](https://edgeguides.rubyonrails.org/8_0_release_notes.html)
 - [Solid Cable GitHub](https://github.com/rails/solid_cable)
@@ -381,8 +349,5 @@ production:
 
 ### Tutorials
 - [Building Real-Time Features with Solid Cable](https://www.youtube.com/watch?v=example)
-- [Rails 8: The Solid Cache, Solid Queue, and Solid Cable](https://blog.example.com)
+- [Rails 8: Solid Cable](https://blog.example.com)
 
-### Community
-- [Rails Discuss](https://discuss.rubyonrails.org/)
-- [Ruby on Rails Discord](https://discord.gg/rails)
