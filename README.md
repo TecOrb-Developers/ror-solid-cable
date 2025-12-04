@@ -332,10 +332,7 @@ production:
 - [ ] Set `RAILS_ENV=production`
 - [ ] Run `rails assets:precompile`
 - [ ] Run `rails db:migrate`
-- [ ] Configure SSL for WebSocket connections
 - [ ] Set appropriate `message_retention` in `cable.yml`
-- [ ] Monitor database CPU usage
-- [ ] Set up database backups
 - [ ] Configure Action Cable allowed origins:
   ```ruby
   config.action_cable.allowed_request_origins = ['https://yourdomain.com']
